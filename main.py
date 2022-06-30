@@ -10,6 +10,8 @@ clock = pygame.time.Clock()
 bg_surf = pygame.Surface((400, 800))
 bg_surf.fill('WHITE')
 
+count = 0
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -18,7 +20,12 @@ while True:
 
     # Draw background
     screen.blit(bg_surf, (0, 0))
-    digit.draw_digit(screen, 3)
+
+    if count == 10: count = 0
+
+    digit.draw_digit(screen, count)
+
+    count += 1
 
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(5)
